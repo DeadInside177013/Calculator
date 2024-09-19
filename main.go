@@ -28,7 +28,7 @@ func main() {
 
 	arguments := strings.Split(line, op)
 	if len(arguments) != 2 {
-		fmt.Println("incorrect format of expression!")
+		panic("incorrect format of expression!")
 		return
 	}
 
@@ -45,30 +45,30 @@ func main() {
 	} else {
 		a, err = strconv.Atoi(argument1)
 		if err != nil {
-			fmt.Println("conflicting arguments")
+			panic("conflicting arguments")
 			return
 		}
 		b, err = strconv.Atoi(argument2)
 		if err != nil {
-			fmt.Println("conflicting arguments")
+			panic("conflicting arguments")
 			return
 		}
 	}
 
 	if a < 1 || a > 10 || b < 1 || b > 10 {
-		fmt.Println("Numbers cannot be less 1 or more than 10")
+		panic("Numbers cannot be less 1 or more than 10")
 		return
 	}
 
 	result, err := numOperarion(a, b, op)
 	if err != nil {
-		fmt.Println(err)
+		panic(err)
 		return
 	}
 
 	if isRoman {
 		if result <= 0 {
-			fmt.Println("In roman numerals, the result cannot be less than or equal ro zero")
+			panic("In roman numerals, the result cannot be less than or equal ro zero")
 		} else {
 			res := arabTorome(result)
 			fmt.Println("Result: %s\n", res)
